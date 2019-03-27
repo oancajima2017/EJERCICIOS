@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panelGrid columns="1">
+                <p:inputText placeholder="Matricula" value="#{carC.car.matricula}"/>
+                <p:inputText placeholder="Marca" value="#{carC.car.marca}"/>
+                <p:inputText placeholder="Modelo" value="#{carC.car.modelo}"/>
+                <p:inputText placeholder="Kilometraje" value="#{carC.car.kilometraje}"/>
+                <p:commandButton value="Guardar" actionListener="#{carC.agregarCar()}" update="data"/>
+            </p:panelGrid>
+            <h1>Lista todo</h1>
+            <p:dataTable id="data" value="#{carC.lstCar}" var="car">
+                <p:column headerText="Matricula">
+                    <p:outputLabel value="#{car.matricula}"/>
+                </p:column>
+                <p:column headerText="Marca">
+                    <p:outputLabel value="#{car.marca}"/>
+                </p:column>
+                <p:column headerText="Modelo">
+                    <p:outputLabel value="#{car.modelo}"/>
+                </p:column>
+                <p:column headerText="Kilometraje">
+                    <p:outputLabel value="#{car.kilometraje}"/>
+                </p:column>
+            </p:dataTable>
+            <h1>Lista solo la marca que contenga la letra "A"</h1>
+            <p:commandButton value="filter" actionListener="#{carC.filterCarMarca()}" update="marca"/>
+            <p:dataTable id="marca" value="#{carC.lstCarModelo}" var="MAR" >
+                <p:column headerText="Matricula">
+                    <p:outputLabel value="#{MAR.matricula}"/>
+                </p:column>
+                <p:column headerText="Marca">
+                    <p:outputLabel value="#{MAR.marca}"/>
+                </p:column>
+                <p:column headerText="Modelo">
+                    <p:outputLabel value="#{MAR.modelo}"/>
+                </p:column>
+                <p:column headerText="Kilometraje">
+                    <p:outputLabel value="#{MAR.kilometraje}"/>
+                </p:column>
+            </p:dataTable>
+            <h1>Lista el que contenga mayor Kilometraje</h1>
+            <p:commandButton value="filter" actionListener="#{carC.mayorKilometraje()}" update="mayorKilometraje"/>
+            <p:dataTable id="mayorKilometraje" value="#{carC.lstMayorKilometraje}" var="mayK" >
+                <p:column headerText="Matricula">
+                    <p:outputLabel value="#{mayK.matricula}"/>
+                </p:column>
+                <p:column headerText="Marca">
+                    <p:outputLabel value="#{mayK.marca}"/>
+                </p:column>
+                <p:column headerText="Modelo">
+                    <p:outputLabel value="#{mayK.modelo}"/>
+                </p:column>
+                <p:column headerText="Kilometraje">
+                    <p:outputLabel value="#{mayK.kilometraje}"/>
+                </p:column>
+            </p:dataTable>
+            <h1>Lista el que contenga menor Kilometraje</h1>
+            <p:commandButton value="filter" actionListener="#{carC.menorKilometraje()}" update="menorKilometraje"/>
+            <p:dataTable id="menorKilometraje" value="#{carC.lstmenorKilometraje}" var="menorK" >
+                <p:column headerText="Matricula">
+                    <p:outputLabel value="#{menorK.matricula}"/>
+                </p:column>
+                <p:column headerText="Marca">
+                    <p:outputLabel value="#{menorK.marca}"/>
+                </p:column>
+                <p:column headerText="Modelo">
+                    <p:outputLabel value="#{menorK.modelo}"/>
+                </p:column>
+                <p:column headerText="Kilometraje">
+                    <p:outputLabel value="#{menorK.kilometraje}"/>
+                </p:column>
+            </p:dataTable>
+
+        </h:form>
+    </h:body>
+</html>
+

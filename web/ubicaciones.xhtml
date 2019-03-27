@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl autoUpdate="true"/>
+            <h2>Ubicaciones</h2>
+            <br/>
+            <p:dataTable var="ubi" value="#{ubicacionesC.ubicaciones}" paginator="true" rows="3">
+                <f:facet name="header">
+                    <p:commandButton value="Descargar" actionListener="#{ubicacionesC.desargarExcel()}" ajax="false"/>
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{ubi.id}" />
+                </p:column>
+
+                <p:column headerText="Código">
+                    <h:outputText value="#{ubi.codigo}" />
+                </p:column>
+
+                <p:column headerText="Ubicación">
+                    <h:outputText value="#{ubi.ubicacion}" />
+                </p:column>
+
+                <p:column headerText="Dirección">
+                    <h:outputText value="#{ubi.direccion}" />
+                </p:column>
+
+                <p:column headerText="Latitud">
+                    <h:outputText value="#{ubi.latitud}" />
+                </p:column>
+                <p:column headerText="Longitud">
+                    <h:outputText value="#{ubi.longitud}" />
+                </p:column>
+                <p:column headerText="Dpto">
+                    <h:outputText value="#{ubi.dpto}" />
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton value="Listar" actionListener="#{ubicacionesC.listarUbicaciones()}" update=":form"/>
+                </f:facet>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
